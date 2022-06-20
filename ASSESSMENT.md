@@ -1,30 +1,34 @@
 # Assessment (FE)
 
-## Introductie
+## Introduction
 
-Bij Dialog ondersteunen we mensen bij het stellen van doelen en het voeren van het goede gesprek. Hiervoor hebben wij een innovatieve methodiek ontwikkeld die wij ondersteunen met een online platform. Tot nu toe hebben wij ons voornamelijk gericht op (persoonlijke) ontwikkeling in je werkomgeving. Maar zeker zo interessant is het om mensen te helpen gezonder te gaan leven.
+At Dialog we've created a platform to support people in setting goals and having the right conversations. We've mainly focused on (personal) development in the work environment. But it is also very interesting to support people to live healthier lives!
 
-Daarom gaan we vandaag een webapplicatie maken die mensen ondersteunt bij het realiseren van een doel op hun gewicht. De bedoeling is dat mensen hun gewicht kunnen vastleggen en door regelmatige reflectie en continu inzicht in hun voortgang makkelijker hun doel halen.
+That's why today we will create a web app application that supports people in reaching a target weight. The user should be able to track their weight on a daily basis so they can get continuous insight into their progress - and reach their goals easily!
+
+It's a short assignment, so we understand it's not a finished application. You're allowed to use all the tools you use normally like Google or Stack Overflow.
 
 ## Requirements
 
-Voor deze applicatie hebben wij de volgende requirements opgesteld:
+For this application we'vre created the following requirements:
 
-* Gebruiker zal de app gebuiken op een desktop (webapp)
-* Gebruiker van de app moet zijn gewicht op dagelijkse basis kunnen vastleggen
-* Gebruiker moet bij de vastlegging een toelichting kunnen geven
-* Gebruiker moet de ontwikkeling van zijn gewicht kunnen zien
-* Gebruiker moet een doel kunnen instellen
-* Gebruiker moet de voortgang t.o.v. zijn doel kunnen zien
-* Gebruiker moet een voorspelling krijgen wanneer zijn doel is bereikt
-* Je hoeft geen inlog / user functionaliteit te bouwen
-* Je hoeft de data niet permanent op te slaan (bijv. in een database)
-* De applicatie moet onder test staan, maar je hoeft in deze opdracht geen tests te schrijven (mag wel).  Wel vragen we je na afloop wat je wilt gaan testen en hoe je dat wilt gaan doen
+Part A - 1 hr
+* User will use the app on a desktop (webapp)
+* User can enter their weight on a daily basis
+* User can add a description with each weight entry
+* User can see the development of their weight
+* User can set a target weight / goal
+* User can see the progress towards their goal
+* You don't have to create inlog / user functionality (single-user app)
+* You don't have to persist the data (eg database)
+* You're not required to write unit tests (but it is allowed), but we will ask you afterwards what you would like to test and how you would do this.
+
+Part B - 30 mins
+* User can see a prediction of when they will reach their goal
 
 ## Project
 
-Er staat al een Angular 11 project met Bootstrap 5 en Angular Testing Library voor je klaar. Van daaruit kun je verder werken. Je hebt voor deze opdracht 1,5 uur de tijd. 
+There is an Angular 11 project with Bootstrap 5 and Angular Testing Library setup for you - `npm start` runs the application.
+The product owner (Jesse) is available for questions.
 
-De product owner (Jochem) en de lead developer/designer (Jesse) zijn beschikbaar voor vragen.
-
-We wensen je heel veel succes en vooral ook heel veel plezier bij deze opdracht!
+Good luck - and don't forget to have fun making this assignment ;-)
