@@ -12,7 +12,6 @@ It's a short assignment, so we understand it's not a finished application. You'r
 
 For this application we'vre created the following requirements:
 
-Part A - 1 hr
 * User will use the app on a desktop (webapp)
 * User can enter their weight on a daily basis
 * User can add a description with each weight entry
@@ -22,9 +21,6 @@ Part A - 1 hr
 * You don't have to create inlog / user functionality (single-user app)
 * You don't have to persist the data (eg database)
 * You're not required to write unit tests (but it is allowed), but we will ask you afterwards what you would like to test and how you would do this.
-
-Part B - 30 mins
-* User can see a prediction of when they will reach their goal
 
 ## Project
 
