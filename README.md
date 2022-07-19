@@ -1,27 +1,32 @@
-# DialogAssessmentFe
+# Assessment
+## Introduction
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
+At Dialog we've created a platform to support people in setting goals and having the right conversations. We've mainly focused on (personal) development in the work environment. But it is also very interesting to support people to live healthier lives!
 
-## Development server
+That's why today we will create a web app application that supports people in reaching a target weight. The user should be able to track their weight on a daily basis so they can get continuous insight into their progress - and reach their goals easily!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It's a short assignment, so we understand it's not a finished application. You're allowed to use all the tools you use normally like Google or Stack Overflow. Spend around max 2hrs on it.
 
-## Code scaffolding
+## Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+For this application we'vre created the following requirements:
 
-## Build
+* User will use the app on a desktop (webapp)
+* User can enter their weight on a daily basis
+* User can add a description with each weight entry
+* User can see the development of their weight
+* User can set a target weight / goal
+* User can see the progress towards their goal
+* You don't have to create inlog / user functionality (single-user app)
+* You don't have to persist the data (eg database)
+* You're not required to write unit tests (but it is allowed), but we will ask you afterwards what you would like to test and how you would do this.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Project
 
-## Running unit tests
+You can choose to do the project in .NET or Angular. 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+.NET: Create an application in Visual Studio. It's OK to just create the endpoints without UI.
+Angular: There is an Angular 11 project with Bootstrap 5 and Angular Testing Library setup for you - `npm start` runs the application.
+The product owner (Jesse) is available for questions.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Good luck - and don't forget to have fun making this assignment ;-)
