@@ -11,10 +11,17 @@ export class WeightService {
    * be stored in DB
    *
    */
-  goal!: number;
-  // addedWeights = new Set<number>();
+  private goalSubject = new BehaviorSubject<number>(null);
   private weightSubject = new BehaviorSubject<Weight[]>([]);
   constructor() { }
+
+  setGoal(goal: number): void {
+    this.goalSubject.next(goal);
+  }
+
+  getGoal(): Observable<number> {
+    return this.goalSubject.asObservable();
+  }
 
   addWeight(weight: Weight): void {
     this.weightSubject.next([...this.weightSubject.value, weight]);

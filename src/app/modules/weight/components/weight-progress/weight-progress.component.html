@@ -1,7 +1,28 @@
-<ng-container *ngIf="weight$ | async as weights">
-<ul>
-  <li *ngFor="let w of weights">
-    {{w.weight}}
-  </li>
-</ul>  
+<div *ngIf="(weight$ | async)?.length; else addGoalTmpl">
+  <ng-container *ngIf="remaining.value > 0; else goalReachedTmpl">
+  {{remaining.value | number:'1.1-2'}} <span class="pull-right">kg left</span>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated"
+      role="progressbar" [style.width.%]="remaining.percent"></div>
+  </div>
 </ng-container>
+</div>
+<ng-container *ngIf="weight$ | async as weights">
+  <ul>
+    <li *ngFor="let w of weights">
+      {{w.weight}}
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #addGoalTmpl>
+  <div class="alert alert-info w-100">
+    In order to see progress please set your goal and add weight records.
+  </div>
+</ng-template>
+
+<ng-template #goalReachedTmpl>
+  <div class="alert alert-success w-100">
+    Congratulations. You've reached your goal
+  </div>
+</ng-template>

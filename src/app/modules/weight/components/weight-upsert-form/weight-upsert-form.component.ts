@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Weight } from '../../models/weight';
 
 @Component({
   selector: 'app-weight-upsert-form',
   templateUrl: './weight-upsert-form.component.html',
-  styleUrls: ['./weight-upsert-form.component.scss']
+  styleUrls: ['./weight-upsert-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeightUpsertFormComponent {
   form: FormGroup;
