@@ -1,0 +1,7 @@
+<ng-container *ngIf="weight$ | async as weights">
+<ul>
+  <li *ngFor="let w of weights">
+    {{w.weight}}
+  </li>
+</ul>  
+</ng-container>

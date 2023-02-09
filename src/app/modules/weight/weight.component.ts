@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Weight } from './models/weight';
 import { WeightService } from './weight.service';
 
 @Component({
@@ -14,5 +15,9 @@ export class WeightComponent {
 
   saveGoal(goal: number): void {
     this.weightService.goal = goal;
+  }
+
+  addWeight(weight: Weight): void {
+    this.weightService.addWeight(weight);
   }
 }

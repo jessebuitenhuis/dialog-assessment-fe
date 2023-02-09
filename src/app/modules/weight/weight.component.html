@@ -4,7 +4,7 @@
       <app-weight-goal-form (goalSaved)="saveGoal($event)"></app-weight-goal-form>
     </div>
     <div class="col-md-6">
-      <app-weight-upsert-form></app-weight-upsert-form>
+      <app-weight-upsert-form (weightAdded)="addWeight($event)"></app-weight-upsert-form>
     </div>
     <div class="col-md-6">
       <app-weight-progress></app-weight-progress>
