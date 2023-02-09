@@ -8,6 +8,10 @@ const routes: Routes = [
     component: WeightComponent
   },
   {
+    path: 'progress',
+    loadChildren: () => import('./modules/progress/progress.module').then(m => m.ProgressModule)
+  },
+  {
     path: '*',
     redirectTo: ''
   }
