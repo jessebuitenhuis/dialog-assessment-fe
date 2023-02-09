@@ -1,0 +1,9 @@
+<form class="d-flex flex-row align-items-center">
+  <div class="form-group w-100 me-2">
+    <label for="goal">Goal weight:</label>
+    <input type="number" class="form-control" step="0.01" id="goal" name="goal"
+      [formControl]="goalControl" [class.is-invalid]="goalControl.invalid">
+    <small id="goalTip" class="form-text text-muted">Required & above 0</small>
+  </div>
+  <button type="button" class="btn btn-primary h-100" (click)="saveGoal()">Submit</button>
+</form>

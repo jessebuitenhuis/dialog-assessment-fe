@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { WeightService } from './weight.service';
 
 @Component({
   selector: 'app-weight',
   templateUrl: './weight.component.html',
   styleUrls: ['./weight.component.scss']
 })
-export class WeightComponent implements OnInit {
+export class WeightComponent {
 
-  constructor() { }
+  constructor(
+    private readonly weightService: WeightService
+  ) { }
 
-  ngOnInit() {
+  saveGoal(goal: number): void {
+    this.weightService.goal = goal;
   }
-
 }
