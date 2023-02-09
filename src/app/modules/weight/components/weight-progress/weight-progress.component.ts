@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { combineLatest, Subject } from 'rxjs';
 import { filter, shareReplay, takeUntil } from 'rxjs/operators';
 import { WeightProgressRemaining } from '../../models/weight';
@@ -15,7 +15,8 @@ export class WeightProgressComponent implements OnDestroy {
   remaining: WeightProgressRemaining;
   private unsubscribe$: Subject<void> = new Subject();
   constructor(
-    private readonly weightService: WeightService
+    private readonly weightService: WeightService,
+    private cdr: ChangeDetectorRef
   ) {
     combineLatest([
       this.weight$,
@@ -30,6 +31,11 @@ export class WeightProgressComponent implements OnDestroy {
         const percent = goal / latestWeight * 100;
 
         this.remaining = { value, percent };
+        // Marking for check because `remaining` variable is used in view
+        // and we need to render this value. There are no other triggers that
+        // trigger change detection and we set this value only when there is goal and
+        // we have weight records
+        this.cdr.markForCheck();
       });
   }
 
