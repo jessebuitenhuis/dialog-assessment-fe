@@ -117,5 +117,7 @@
       }
     }
   },
-  "defaultProject": "dialog-assessment-fe"
+  "cli": {
+    "analytics": false
+  }
 }
