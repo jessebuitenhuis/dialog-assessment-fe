@@ -5,6 +5,8 @@
     <div class="progress-bar progress-bar-striped progress-bar-animated"
       role="progressbar" [style.width.%]="remaining.percent"></div>
   </div>
+
+  <div class="h4">Time it will take to reach goal: <b>{{requiredForGoal}}</b></div>
 </ng-container>
 </div>
 <ng-container *ngIf="weight$ | async as weights">
