@@ -5,8 +5,6 @@ import { WeightService } from '../../weight.service';
 import { WeightProgressComponent } from './weight-progress.component';
 
 describe('WeightProgressComponent', () => {
-    // Since we know that only weight will be used then telling
-    // TS to take only weight property and ignore rest.
     const sampleWeights: Weight[] = [
         { weight: 78, comment: '' },
         { weight: 77, comment: '' },
