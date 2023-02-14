@@ -17,5 +17,19 @@
         </div>
       </fieldset>
     </form>
+
+    <form class="col-sm-4" autocomplete="off">
+      <fieldset>
+        <div class="mb-3">
+          <label class="form-label" for="todayId">Today's numbers (kg)</label>
+          <input class="form-control" type="number" step=".01" min="1" max="" id="todayId" name="today" placeholder="This is me today :)">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="descId">Note to future me</label>
+          <textarea class="form-control" id="descId" name="desc" placeholder="Lorem ipsum..."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+      </fieldset>
+    </form>
   </div>
 </main>
