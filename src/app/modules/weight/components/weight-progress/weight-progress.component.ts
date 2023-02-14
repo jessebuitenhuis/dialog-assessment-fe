@@ -19,29 +19,7 @@ export class WeightProgressComponent implements OnDestroy {
     private readonly weightService: WeightService,
     private cdr: ChangeDetectorRef
   ) {
-    combineLatest([
-      this.weight$,
-      this.weightService.getGoal()
-    ])
-      .pipe(
-        filter(([weight, goal]) => weight.length && goal >= 0),
-        takeUntil(this.unsubscribe$)
-      ).subscribe(([weight, goal]) => {
-        // Setting remaining progress
-        this.remaining = this.getRemainingWeightProgress(weight, goal);
-
-        const diff = this.getWeightProgressDifference(weight);
-        // Decreasing weight length by 1 because there is no initial value for substraction
-        // and thus average would be off
-        const average = this.getAverageWeightLoss(diff, weight.length - 1);
-        this.requiredForGoal = this.getEstimateForGoal(this.remaining.value, average);
-
-        // Marking for check because `remaining` variable is used in view
-        // and we need to render this value. There are no other triggers that
-        // trigger change detection and we set this value only when there is goal and
-        // we have weight records
-        this.cdr.markForCheck();
-      });
+    this.setupObservable();
   }
 
   ngOnDestroy(): void {
@@ -76,6 +54,34 @@ export class WeightProgressComponent implements OnDestroy {
     return total;
   }
 
+  private setupObservable(): void {
+    combineLatest([
+      this.weight$,
+      this.weightService.getGoal()
+    ])
+      .pipe(
+        filter(([weight, goal]) => weight.length && goal >= 0),
+        takeUntil(this.unsubscribe$)
+      ).subscribe(([weight, goal]) => {
+        // Setting remaining progress
+        this.remaining = this.getRemainingWeightProgress(weight, goal);
+
+        const diff = this.getWeightProgressDifference(weight);
+        // Decreasing weight length by 1 because there is no initial value for substraction
+        // and thus average would be off
+        const average = this.getAverageWeightLoss(diff, weight.length - 1);
+        // NOTE: Only for debugging purposes
+        console.log(`Average: ${average}`);
+        this.requiredForGoal = this.getEstimateForGoal(this.remaining.value, average);
+
+        // Marking for check because `remaining` variable is used in view
+        // and we need to render this value. There are no other triggers that
+        // trigger change detection and we set this value only when there is goal and
+        // we have weight records
+        this.cdr.markForCheck();
+      });
+  }
+
   /**
    * Method calculates average value of total weight loss
    *
@@ -94,8 +100,19 @@ export class WeightProgressComponent implements OnDestroy {
     return totalLoss / recordNum;
   }
 
+  /**
+   * Method calculates estimation to reach weight goal based on average loss tendency
+   *
+   * @private
+   * @param {number} remaining Remaining value until goal is reached
+   * @param {number} avgLoss Average weight loss
+   * @return {number} Returns estimated number of how long will it take to achieve goal based
+   * on average loss value. Returns `null` if its impossible to calculate estimate based
+   * on provided data
+   * @memberof WeightProgressComponent
+   */
   private getEstimateForGoal(remaining: number, avgLoss: number): number {
-    if (!remaining || remaining < 0) {
+    if (!remaining || remaining < 0 || !avgLoss) {
       return null;
     }
 
