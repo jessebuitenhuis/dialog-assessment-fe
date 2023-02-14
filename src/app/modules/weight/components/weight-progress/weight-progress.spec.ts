@@ -7,12 +7,12 @@ import { WeightProgressComponent } from './weight-progress.component';
 describe('WeightProgressComponent', () => {
     // Since we know that only weight will be used then telling
     // TS to take only weight property and ignore rest.
-    const sampleWeights: Pick<Weight, 'weight'>[] = [
-        { weight: 78 },
-        { weight: 77 },
-        { weight: 76 },
-        { weight: 75 },
-        { weight: 74 },
+    const sampleWeights: Weight[] = [
+        { weight: 78, comment: '' },
+        { weight: 77, comment: '' },
+        { weight: 76, comment: '' },
+        { weight: 75, comment: '' },
+        { weight: 74, comment: '' },
     ];
 
     let fixture: ComponentFixture<WeightProgressComponent>;
@@ -47,7 +47,7 @@ describe('WeightProgressComponent', () => {
 
         it('should still have no value if there are no two weight records and set goal', () => {
             weightServiceMock.getGoal.and.returnValue(of(72));
-            comp.weight$ = of([sampleWeights[0] as Weight]);
+            comp.weight$ = of([sampleWeights[0]]);
             // tslint:disable-next-line:no-string-literal
             comp['setupObservable']();
             // Checking for goal to be null and not undefined because
@@ -58,7 +58,7 @@ describe('WeightProgressComponent', () => {
 
         it('should have corrrect value if goal is set and there are at least two weight records', () => {
             weightServiceMock.getGoal.and.returnValue(of(72));
-            comp.weight$ = of([...sampleWeights as Weight[]]);
+            comp.weight$ = of([...sampleWeights]);
             // tslint:disable-next-line:no-string-literal
             comp['setupObservable']();
             // Checking for goal to be null and not undefined because
@@ -74,7 +74,7 @@ describe('WeightProgressComponent', () => {
             // tslint:disable-next-line:no-string-literal
             const getWeightProgressDifference = comp['getWeightProgressDifference'];
 
-            expect(getWeightProgressDifference(sampleWeights as Weight[])).toBe(4);
+            expect(getWeightProgressDifference(sampleWeights)).toBe(4);
         });
     });
 
@@ -84,7 +84,7 @@ describe('WeightProgressComponent', () => {
             // tslint:disable-next-line:no-string-literal
             const getAverageWeightLoss = comp['getAverageWeightLoss'];
             // tslint:disable-next-line:no-string-literal
-            const totalProgressDiff = comp['getWeightProgressDifference'](sampleWeights as Weight[]);
+            const totalProgressDiff = comp['getWeightProgressDifference'](sampleWeights);
 
             expect(getAverageWeightLoss(totalProgressDiff, sampleWeights.length - 1)).toBe(1);
         });
