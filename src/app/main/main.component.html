@@ -6,30 +6,30 @@
     <div class="col-sm-8">
       <div>My progress</div>
       <div class="progress my-3" role="progressbar" aria-label="Your progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-bar" style="width:0%"></div>
+        <div class="progress-bar" style="width:{{getProgress() | percent}}"></div>
       </div>
     </div>
 
-    <form class="col-sm-4" autocomplete="off">
+    <form class="col-sm-4" autocomplete="off" [formGroup]="goalForm" (ngSubmit)="onSubmitGoal()">
       <fieldset>
         <div class="mb-3">
           <label class="form-label" for="goalId">My goal (kg)</label>
-          <input class="form-control" type="number" step=".01" min="1" max="" id="goalId" name="goal" placeholder="I will reach it!">
+          <input class="form-control" type="number" step=".01" min="1" max="" id="goalId" formControlName="goal" placeholder="I will reach it!" required (change)="onSubmitGoal()">
         </div>
       </fieldset>
     </form>
 
-    <form class="col-sm-4" autocomplete="off">
+    <form class="col-sm-4" autocomplete="off" [formGroup]="todayForm" (ngSubmit)="onSubmitToday()">
       <fieldset>
         <div class="mb-3">
           <label class="form-label" for="todayId">Today's numbers (kg)</label>
-          <input class="form-control" type="number" step=".01" min="1" max="" id="todayId" name="today" placeholder="This is me today :)">
+          <input class="form-control" type="number" step=".01" min="1" max="" id="todayId" formControlName="today" placeholder="This is me today :)" required>
         </div>
         <div class="mb-3">
           <label class="form-label" for="descId">Note to future me</label>
-          <textarea class="form-control" id="descId" name="desc" placeholder="Lorem ipsum..."></textarea>
+          <textarea class="form-control" id="descId" formControlName="desc" placeholder="Lorem ipsum..."></textarea>
         </div>
-        <button class="btn btn-primary" type="submit">Add</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!todayForm.valid">Add</button>
       </fieldset>
     </form>
   </div>
