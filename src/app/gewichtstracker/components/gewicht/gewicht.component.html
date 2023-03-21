@@ -1,0 +1,22 @@
+<ng-container>
+    <h2>Vul dagelijks in</h2>
+
+    <form [formGroup]="gewichtForm" class="d-flex flex-column">
+        <div class="flex-row p-4">
+            <label for="gewicht">Ik weeg vandaag: </label>
+            <input class="padding-left-4" id="gewicht" placeholder="bv. 80 kg" type="number" formControlName="gewicht">
+        </div>
+
+        <div class="flex-row p-4">
+            <label for="toelichting">Toelichting: </label>
+            <textarea id="toelichting" type="text" formControlName="toelichting"></textarea>
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Verstuur</button>
+    </form>
+
+    <div>
+        Tip: weeg jezelf op een vast tijdstip
+    </div>
+</ng-container>

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dialog-assessment-fe';
+  item: string = '';
+
+  nieuwItem(newItem: string) {
+    this.item = newItem;
+  }
 }
