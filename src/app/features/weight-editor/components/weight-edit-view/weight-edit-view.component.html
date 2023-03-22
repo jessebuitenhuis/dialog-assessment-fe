@@ -1,0 +1,11 @@
+<form id="weight-edit-form" class="p-4 d-flex flex-column" (submit)="onValueSave()">
+  <div class="mb-3">
+    <label for="weight-input" class="form-label">{{inputTitle}}</label>
+    <input type="number" step="1" class="form-control" id="weight-input" placeholder="Enter number" (input)="onInputChange($event)">
+  </div>
+  <div class="mb-3">
+    <label for="weight-description-textarea" class="form-label">Description</label>
+    <textarea class="form-control" id="weight-description-textarea" rows="3" maxlength="200"  (input)="onDescriptionChange($event)"></textarea>
+  </div>
+  <button type="submit" class="w-50 align-self-center" [disabled]="value === initialValue">Save</button>
+</form>
