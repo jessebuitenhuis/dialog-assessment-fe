@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {getWeightTitle} from '../../../../shared/utils/textUtils';
+import {DataService} from '../../../../core/services/data.service';
 import {removeDecimalValues} from '../../../../shared/utils/utils';
 
 @Component({
@@ -17,18 +18,26 @@ export class WeightEditViewComponent implements OnInit {
   inputTitle: string;
 
   ngOnInit(): void {
-    const data = null;
+    const data = this.dataService.getDataById(this.id);
 
-    this.initialValue = data?.value || null;
-    this.value = data?.value || null;
+    this.initialValue = data?.weight || null;
+    this.value = data?.weight || null;
+    this.description = data?.description;
 
-    const prefix = data?.value ? 'Edit' : 'Enter';
+    const prefix = data?.weight ? 'Edit' : 'Enter';
     const suffix = getWeightTitle(this.isMetric);
 
     this.inputTitle = `${prefix} the weight ${suffix}`;
   }
 
+  constructor(private dataService: DataService) {}
+
   onValueSave(): void {
+    if (this.id) {
+      this.dataService.updateData(this.id, { weight: this.value, description: this.description }, this.isMetric);
+    } else {
+      this.dataService.addData({ weight: this.value, description: this.description}, this.isMetric);
+    }
   }
 
   onInputChange(event: Event): void {
