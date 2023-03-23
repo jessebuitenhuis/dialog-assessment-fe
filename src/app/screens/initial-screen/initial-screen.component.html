@@ -1,0 +1,13 @@
+<div class="p-4">
+  <app-title title="Lets feel in your initial data!"></app-title>
+  <form id="app-initial-data-form" (submit)="formSubmit()">
+    <div class="mb-3">
+      <app-title classes="form-label mb-0" title="Select preferred weight unit"></app-title>
+      <app-radio-button label="Kg" isPreChecked="true" value="Kg" [radioSelect]="changeWeightUnit"></app-radio-button>
+      <app-radio-button label="Lbs" value="Lbs" [radioSelect]="changeWeightUnit"></app-radio-button>
+    </div>
+    <app-text-input inputClasses="form-control" titleClasses="form-label" title="Enter your name" [value]="userName" [valueChange]="setUserName"></app-text-input>
+    <app-text-input type="number" title="Enter your target weight" inputClasses="form-control" titleClasses="form-label" [value]="targetWeight" [valueChange]="setTargetWeight"></app-text-input>
+    <button type="submit" class="btn btn-primary" [disabled]="submitDisabled">Save</button>
+  </form>
+</div>
