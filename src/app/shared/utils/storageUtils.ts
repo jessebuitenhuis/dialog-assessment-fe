@@ -1,10 +1,8 @@
-import {StoredWeightData} from '../../../types';
-
-export function saveToStorage(key: string, data: Array<StoredWeightData>): void {
+export function saveToStorage<T>(key: string, data: T): void {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-export function retreatFromStorage(key: string): Array<StoredWeightData> | null {
+export function retreatFromStorage<T>(key: string): T | null {
   const storedData = localStorage.getItem(key);
 
   return storedData ? JSON.parse(storedData) : null;
