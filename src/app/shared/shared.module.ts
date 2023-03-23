@@ -3,19 +3,23 @@ import { CommonModule } from '@angular/common';
 import { TextInputComponent } from './components/text-input/text-input.component';
 import { TitleComponent } from './components/title/title.component';
 import { SubTitleComponent } from './components/sub-title/sub-title.component';
+import { RadioButtonComponent } from './components/radio-button/radio-button.component';
 
 @NgModule({
   declarations: [
     TextInputComponent,
     TitleComponent,
-    SubTitleComponent
+    SubTitleComponent,
+    RadioButtonComponent
   ],
     imports: [
         CommonModule,
     ],
   exports: [
     TextInputComponent,
-    TitleComponent
+    TitleComponent,
+    SubTitleComponent,
+    RadioButtonComponent,
   ]
 })
 export class SharedModule { }
