@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {StoredWeightData} from '../../../../../types';
-import {DataService} from '../../../../core/services/data.service';
 
 @Component({
   selector: 'app-weight-view-list',
@@ -15,16 +14,7 @@ import {DataService} from '../../../../core/services/data.service';
   `,
 })
 
-export class WeightViewListComponent implements OnInit {
+export class WeightViewListComponent {
   @Input() isMetric: boolean;
-
-  items: StoredWeightData[];
-
-  constructor(private dataService: DataService) {}
-
-  ngOnInit(): void {
-    const data = this.dataService.getData();
-
-    this.items = data.sort((a: StoredWeightData, b: StoredWeightData) => b.created - a.created);
-  }
+  @Input() items: Array<StoredWeightData>;
 }
