@@ -1,4 +1,4 @@
 
-export function getWeightTitle(isMetric: boolean): string {
-  return `(in ${isMetric ? 'kg' : 'lb'})`;
+export function getWeightUnit(isMetric: boolean): string {
+  return isMetric ? 'kg' : 'lb';
 }

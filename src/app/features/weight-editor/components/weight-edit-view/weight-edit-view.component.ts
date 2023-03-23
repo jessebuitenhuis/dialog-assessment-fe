@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {getWeightTitle} from '../../../../shared/utils/textUtils';
+import {getWeightUnit} from '../../../../shared/utils/textUtils';
 import {DataService} from '../../../../core/services/data.service';
 import {removeDecimalValues} from '../../../../shared/utils/utils';
 
@@ -25,9 +25,9 @@ export class WeightEditViewComponent implements OnInit {
     this.description = data?.description;
 
     const prefix = data?.weight ? 'Edit' : 'Enter';
-    const suffix = getWeightTitle(this.isMetric);
+    const unit = getWeightUnit(this.isMetric);
 
-    this.inputTitle = `${prefix} the weight ${suffix}`;
+    this.inputTitle = `${prefix} the weight (in ${unit})`;
   }
 
   constructor(private dataService: DataService) {}
