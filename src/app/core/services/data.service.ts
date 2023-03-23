@@ -31,6 +31,8 @@ export class DataService {
     return this.data?.find((d) => d.id === id);
   }
 
+  public getData(): Array<StoredWeightData> { return this.data; }
+
   public updateData(id: string, newValue: WeightData, isMetric: boolean): void {
     const index = this.data.findIndex((d) => d.id === id);
 
