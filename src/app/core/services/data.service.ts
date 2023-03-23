@@ -3,16 +3,17 @@ import {Injectable} from '@angular/core';
 import {retreatFromStorage, saveToStorage} from '../../shared/utils/storageUtils';
 import {generateId, kgToLbs} from '../../shared/utils/utils';
 import {StoredWeightData, WeightData} from '../../../types';
+import {storageKeys} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private readonly storageKey = 'my-app-data';
+  private readonly storageKey = storageKeys.data;
   private readonly data: Array<StoredWeightData> = [];
 
   constructor() {
-    const storedData = retreatFromStorage(this.storageKey);
+    const storedData = retreatFromStorage<Array<StoredWeightData>>(this.storageKey);
 
     this.data = storedData || [];
   }
@@ -24,7 +25,7 @@ export class DataService {
 
     this.data.push({ id, weight, created, description: value.description });
 
-    saveToStorage(this.storageKey, this.data);
+    saveToStorage<Array<StoredWeightData>>(this.storageKey, this.data);
   }
 
   public getDataById(id: string): WeightData | undefined {
@@ -41,7 +42,7 @@ export class DataService {
 
       this.data[index] = { ...this.data[index], weight, description: newValue.description};
 
-      saveToStorage(this.storageKey, this.data);
+      saveToStorage<Array<StoredWeightData>>(this.storageKey, this.data);
     }
   }
 }
