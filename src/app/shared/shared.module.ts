@@ -11,7 +11,8 @@ import { SwitchComponent } from './components/switch/switch.component';
     TextInputComponent,
     TitleComponent,
     SubTitleComponent,
-    RadioButtonComponent
+    RadioButtonComponent,
+    SwitchComponent,
   ],
     imports: [
         CommonModule,
@@ -21,6 +22,7 @@ import { SwitchComponent } from './components/switch/switch.component';
     TitleComponent,
     SubTitleComponent,
     RadioButtonComponent,
+    SwitchComponent
   ]
 })
 export class SharedModule { }
