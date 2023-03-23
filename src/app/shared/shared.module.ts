@@ -4,6 +4,7 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { TitleComponent } from './components/title/title.component';
 import { SubTitleComponent } from './components/sub-title/sub-title.component';
 import { RadioButtonComponent } from './components/radio-button/radio-button.component';
+import { SwitchComponent } from './components/switch/switch.component';
 
 @NgModule({
   declarations: [
