@@ -4,16 +4,16 @@ import { Component, Input } from '@angular/core';
   selector: 'app-text-input',
   template: `
   <div class="mb-3">
-    <label [class]="titleName">{{title}}</label>
+    <label [class]="titleClasses">{{title}}</label>
     <input [type]="type"
            [placeholder]="placeholder"
            [value]="value"
            (input)="valueChange($event)"
            [disabled]="disabled"
-           [name]="name">
+           [name]="name"
+    [class]="inputClasses">
   </div>
   `,
-  styleUrls: ['./text-input.component.scss']
 })
 
 export class TextInputComponent {
@@ -22,10 +22,11 @@ export class TextInputComponent {
   @Input() type = 'text';
   @Input() disabled = false;
   @Input() value: string | number;
+  @Input() inputClasses: string;
   @Input() placeholder = '';
   @Input() title = '';
   @Input() titleName = '';
-  @Input() titleClasses = '';
+  @Input() titleClasses: string;
   @Input() valueChange: (value: Event) => void;
 }
 
