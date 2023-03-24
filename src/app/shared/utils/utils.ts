@@ -1,7 +1,7 @@
 import {v4 as uuidv4} from 'uuid';
 
 export function kgToLbs(kg: number): number {
-  return kg * 2.20462;
+  return Math.floor(kg * 2.20462);
 }
 
 export function generateId(): string {
