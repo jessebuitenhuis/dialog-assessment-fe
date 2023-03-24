@@ -1,14 +1,20 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {getWeightUnit} from '../../../../shared/utils/textUtils';
-import {DataService} from '../../../../core/services/data.service';
-import {removeDecimalValues} from '../../../../shared/utils/utils';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { getWeightUnit } from '../../../../shared/utils/textUtils';
+import { DataService } from '../../../../core/services/data.service';
+import { removeDecimalValues } from '../../../../shared/utils/utils';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-weight-edit-view',
   templateUrl: './weight-edit-view.component.html',
 })
-
-export class WeightEditViewComponent implements OnInit {
+export class WeightEditViewComponent implements OnInit, OnChanges {
   @Input() id: string;
   @Input() isMetric: boolean;
 
@@ -22,22 +28,32 @@ export class WeightEditViewComponent implements OnInit {
 
     this.initialValue = data?.weight || null;
     this.value = data?.weight || null;
-    this.description = data?.description;
-
-    const prefix = data?.weight ? 'Edit' : 'Enter';
-    const unit = getWeightUnit(this.isMetric);
-
-    this.inputTitle = `${prefix} the weight (in ${unit})`;
+    this.description = data?.description || '';
   }
 
-  constructor(private dataService: DataService) {}
-
-  onValueSave(): void {
-    if (this.id) {
-      this.dataService.updateData(this.id, { weight: this.value, description: this.description }, this.isMetric);
-    } else {
-      this.dataService.addData({ weight: this.value, description: this.description}, this.isMetric);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.isMetric) {
+      this.handleIsMetricChange();
     }
+  }
+
+  constructor(private dataService: DataService, private router: Router) {}
+
+  async onValueSave(): Promise<void> {
+    if (this.id) {
+      this.dataService.updateData(
+        this.id,
+        { weight: this.value, description: this.description },
+        this.isMetric
+      );
+    } else {
+      this.dataService.addData(
+        { weight: this.value, description: this.description },
+        this.isMetric
+      );
+    }
+
+    await this.router.navigate(['/']);
   }
 
   onInputChange(event: Event): void {
@@ -51,5 +67,12 @@ export class WeightEditViewComponent implements OnInit {
     const element = $event.currentTarget as HTMLInputElement;
 
     this.description = element.value;
+  }
+
+  handleIsMetricChange(): void {
+    const prefix = this.value ? 'Edit' : 'Enter';
+    const unit = getWeightUnit(this.isMetric);
+
+    this.inputTitle = `${prefix} the weight (in ${unit})`;
   }
 }
