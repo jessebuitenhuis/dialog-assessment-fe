@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'app-title',
   template: `
-    <p class="text-xxl-start {{classes}}">{{title}}</p>
+    <p class="fs-5 {{classes}}">{{title}}</p>
   `,
 })
 

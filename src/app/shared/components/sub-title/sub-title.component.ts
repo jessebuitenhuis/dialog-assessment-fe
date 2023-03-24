@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'app-sub-title',
   template: `
-    <app-title [title]="subTitle" [classes]="['fs-6', classes]"></app-title>
+    <app-title [title]="subTitle" classes="fs-6 {{classes}}"></app-title>
   `,
 })
 
