@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserSettings} from '../../../types';
-import {storageKeys} from '../../../environments/environment';
-import {saveToStorage} from '../../shared/utils/storageUtils';
+import { UserSettings } from '../../../types';
+import { storageKeys } from '../../../environments/environment';
+import { saveToStorage } from '../../shared/utils/storageUtils';
 
 @Component({
   selector: 'app-initial-screen',
@@ -26,7 +26,7 @@ export class InitialScreenComponent implements OnInit {
     const userData: UserSettings = {
       targetWeight: this.targetWeight,
       isMetric: this.isMetric,
-      userName: this.userName
+      userName: this.userName,
     };
 
     saveToStorage<UserSettings>(this.storageKey, userData);
