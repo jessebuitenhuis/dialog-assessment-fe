@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { Location } from '@angular/common';
 import { getWeightUnit } from '../../../../shared/utils/textUtils';
 import { DataService } from '../../../../core/services/data.service';
 import { removeDecimalValues } from '../../../../shared/utils/utils';
@@ -37,7 +38,11 @@ export class WeightEditViewComponent implements OnInit, OnChanges {
     }
   }
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private location: Location
+  ) {}
 
   async onValueSave(): Promise<void> {
     if (this.id) {
@@ -74,5 +79,9 @@ export class WeightEditViewComponent implements OnInit, OnChanges {
     const unit = getWeightUnit(this.isMetric);
 
     this.inputTitle = `${prefix} the weight (in ${unit})`;
+  }
+
+  handleCancelClick(): void {
+    this.location.back();
   }
 }
