@@ -13,18 +13,25 @@ import { UserSettings } from '../../../types';
   template: `
     <header class="navbar navbar-expand-lg navbar-light bg-light p-2">
       <div class="justify-content-start flex-column ps-4">
-        <app-title classes="m-0" [title]="'Hello ' + userSettings.userName "></app-title>
+        <app-title
+          classes="m-0"
+          [title]="'Hello ' + userSettings.userName"
+        ></app-title>
         <app-sub-title classes="m-0" [subTitle]="weightTitle"></app-sub-title>
       </div>
-      <div class="d-flex justify-content-end flex-row pe-4">
-        <b>Kg</b>
-        <app-switch classes="mx-1" [switchChange]="changeWeightUnits"></app-switch>
-        <b>Lbs</b>
-      </div>
+      <ng-container *ngIf="userSettings.userName">
+        <div class="d-flex justify-content-end flex-row pe-4">
+          <b>Kg</b>
+          <app-switch
+            classes="mx-1"
+            [switchChange]="changeWeightUnits"
+          ></app-switch>
+          <b>Lbs</b>
+        </div>
+      </ng-container>
     </header>
   `,
 })
-
 export class HeaderComponent implements OnInit, OnDestroy {
   weightTitle: string;
   userSettings: UserSettings;
@@ -35,13 +42,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sharedService.userSettings$
       .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(userSettings => {
+      .subscribe((userSettings) => {
         this.userSettings = userSettings;
 
-        const unitType = getWeightUnit(this.userSettings.isMetric);
-        const weightValue = this.userSettings.isMetric ? this.userSettings.targetWeight : kgToLbs(this.userSettings.targetWeight);
+        const unitType = getWeightUnit(userSettings.isMetric);
+        const weightValue = userSettings.isMetric
+          ? userSettings.targetWeight
+          : kgToLbs(userSettings.targetWeight);
 
-        this.weightTitle = `Your target weight is ${weightValue}${unitType}`;
+        this.weightTitle = `Your target weight is ${weightValue} ${unitType}`;
       });
   }
 
@@ -51,7 +60,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   changeWeightUnits = (isChecked: boolean): void => {
-
     this.sharedService.userSettings = {
       ...this.userSettings,
       isMetric: !isChecked,
