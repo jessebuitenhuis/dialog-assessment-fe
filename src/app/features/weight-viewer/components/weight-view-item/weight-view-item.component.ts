@@ -18,7 +18,7 @@ import { getWeightUnit } from '../../../../shared/utils/textUtils';
           Created at {{ dateCreated }}
         </h6>
         <p class="card-text">{{ description }}</p>
-        <a [href]="id" class="card-link">Edit</a>
+        <a [routerLink]="['/edit', id]" class="card-link">Edit</a>
       </div>
     </div>
   `,
