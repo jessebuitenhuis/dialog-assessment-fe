@@ -11,7 +11,7 @@ import { UserSettings } from '../../../types';
 @Component({
   selector: 'app-header',
   template: `
-    <header class="navbar navbar-expand-lg navbar-light bg-light p-2">
+    <header class="navbar navbar-expand-lg navbar-light bg-light p-2 justify-content-between">
       <div class="justify-content-start flex-column ps-4">
         <app-title
           classes="m-0"

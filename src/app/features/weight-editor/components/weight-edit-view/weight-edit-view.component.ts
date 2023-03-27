@@ -20,14 +20,15 @@ export class WeightEditViewComponent implements OnInit, OnChanges {
   @Input() isMetric: boolean;
 
   value: number;
-  initialValue: number;
+
+  isRecordUpdated: boolean;
   description: string;
   inputTitle: string;
 
   ngOnInit(): void {
     const data = this.dataService.getDataById(this.id);
 
-    this.initialValue = data?.weight || null;
+    this.isRecordUpdated = false;
     this.value = data?.weight || null;
     this.description = data?.description || '';
   }
@@ -66,12 +67,14 @@ export class WeightEditViewComponent implements OnInit, OnChanges {
     const newValue = removeDecimalValues(inputElement.value);
 
     this.value = Number(newValue);
+    this.isRecordUpdated = true;
   }
 
   onDescriptionChange($event: Event): void {
     const element = $event.currentTarget as HTMLInputElement;
 
     this.description = element.value;
+    this.isRecordUpdated = true;
   }
 
   handleIsMetricChange(): void {
