@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { StoredWeightData } from '../../../types';
 import { DataService } from '../../core/services/data.service';
 import { takeUntil } from 'rxjs/operators';
@@ -20,6 +27,13 @@ import { Subject } from 'rxjs';
         <div class="d-flex justify-content-center px-4 py-2">
           <a routerLink="/edit">Add new record</a>
         </div>
+        <div class="px-4">
+          <app-weight-progress
+            [currentValue]="currentWeight"
+            [targetValue]="targetWeight"
+          ></app-weight-progress>
+        </div>
+
         <app-weight-view-list
           [isMetric]="isMetric"
           [items]="items"
@@ -28,12 +42,14 @@ import { Subject } from 'rxjs';
     </div>
   `,
 })
-export class MainScreenComponent implements OnInit, OnDestroy {
+export class MainScreenComponent implements OnInit, OnChanges, OnDestroy {
   @Input() userName: string;
   @Input() targetWeight: number;
   isMetric: boolean;
 
   items: StoredWeightData[];
+
+  currentWeight: number;
 
   private ngUnsubscribe = new Subject<void>();
 
@@ -56,11 +72,29 @@ export class MainScreenComponent implements OnInit, OnDestroy {
         this.isMetric = isMetric;
         this.targetWeight = targetWeight;
         this.userName = userName;
+
+        this.setCurrentWeight(this.items);
       });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.items) {
+      const updatedItems: unknown = changes.items;
+
+      this.setCurrentWeight(updatedItems as StoredWeightData[]);
+    }
   }
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  setCurrentWeight(items: StoredWeightData[]): void {
+    const latestRecord = items.reduce((prev, current) => {
+      return prev.created > current.created ? prev : current;
+    });
+
+    this.currentWeight = latestRecord.weight;
   }
 }
