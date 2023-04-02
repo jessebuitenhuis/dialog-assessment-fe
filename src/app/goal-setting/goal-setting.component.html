@@ -1,0 +1,17 @@
+<h2>Set Your Weight Goal</h2>
+<form (ngSubmit)="setGoal()" class="form">
+  <div class="mb-3">
+    <label class="form-label">Goal:</label>
+    <input [(ngModel)]="goal" name="goal" type="number" required [placeholder]="'Target weight in ' + unit"
+      class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Set Goal</button>
+</form>
+
+<div *ngIf="weightService.goal">
+  <h3>Goal: {{ weightService.goal }} {{ unit }}</h3>
+  <h3 *ngIf="weightService.getProgress()">
+    Progress: {{ weightService.getProgress() > 0 ? 'Over' : 'Under' }} by {{ weightService.getProgress() | abs }} {{
+    unit }}
+  </h3>
+</div>

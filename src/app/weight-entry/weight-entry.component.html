@@ -1,0 +1,13 @@
+<h2>Add a new weight entry</h2>
+<form (ngSubmit)="addWeightEntry()" class="form">
+  <div class="mb-3">
+    <label class="form-label">Weight:</label>
+    <input [(ngModel)]="weight" name="weight" type="number" required [placeholder]="'Weight in ' + unit"
+      class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Description:</label>
+    <input [(ngModel)]="description" name="description" type="text" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Add Entry</button>
+</form>

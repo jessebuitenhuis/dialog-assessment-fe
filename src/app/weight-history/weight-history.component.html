@@ -1,0 +1,17 @@
+<h2>Weight History</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Weight ({{ unit }})</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of weightService.weightEntries">
+      <td>{{ entry.date | date: 'shortDate' }}</td>
+      <td>{{ entry.weight }}</td>
+      <td>{{ entry.description }}</td>
+    </tr>
+  </tbody>
+</table>
