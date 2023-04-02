@@ -1,0 +1,13 @@
+<!-- weight-entry.component.html -->
+<h2>Add a new weight entry</h2>
+<form (ngSubmit)="addWeightEntry()">
+  <label>
+    Weight:
+    <input [(ngModel)]="weight" name="weight" type="number" required placeholder="Weight in KG" />
+  </label>
+  <label>
+    Description:
+    <input [(ngModel)]="description" name="description" type="text" />
+  </label>
+  <button type="submit">Add Entry</button>
+</form>

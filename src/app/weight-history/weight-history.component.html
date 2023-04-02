@@ -1,0 +1,17 @@
+<!-- weight-history.component.html -->
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Weight</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of weightService.weightEntries">
+      <td>{{ entry.date | date }}</td>
+      <td>{{ entry.weight }}</td>
+      <td>{{ entry.description }}</td>
+    </tr>
+  </tbody>
+</table>

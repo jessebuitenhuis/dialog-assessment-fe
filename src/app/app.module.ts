@@ -1,18 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { GoalSettingComponent } from './goal-setting/goal-setting.component';
+import { NgModule } from '@angular/core';
+import { WeightEntryComponent } from './weight-entry/weight-entry.component';
+import { WeightHistoryComponent } from './weight-history/weight-history.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WeightEntryComponent,
+    WeightHistoryComponent,
+    GoalSettingComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
