@@ -1,9 +1,9 @@
-<!-- weight-entry.component.html -->
 <h2>Add a new weight entry</h2>
 <form (ngSubmit)="addWeightEntry()" class="form">
   <div class="mb-3">
     <label class="form-label">Weight:</label>
-    <input [(ngModel)]="weight" name="weight" type="number" required placeholder="Weight in KG" class="form-control" />
+    <input [(ngModel)]="weight" name="weight" type="number" required [placeholder]="'Weight in ' + unit"
+      class="form-control" />
   </div>
   <div class="mb-3">
     <label class="form-label">Description:</label>
