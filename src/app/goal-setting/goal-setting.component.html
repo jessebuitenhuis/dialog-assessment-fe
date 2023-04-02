@@ -1,11 +1,12 @@
 <!-- goal-setting.component.html -->
 <h2>Set Your Weight Goal</h2>
-<form (ngSubmit)="setGoal()">
-  <label>
-    Goal:
-    <input [(ngModel)]="goal" name="goal" type="number" required placeholder="Weight in KG" />
-  </label>
-  <button type="submit">Set Goal</button>
+<form (ngSubmit)="setGoal()" class="form">
+  <div class="mb-3">
+    <label class="form-label">Goal:</label>
+    <input [(ngModel)]="goal" name="goal" type="number" required placeholder="Target weight in KG"
+      class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Set Goal</button>
 </form>
 
 <div *ngIf="weightService.goal">
