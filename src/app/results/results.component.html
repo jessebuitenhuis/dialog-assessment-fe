@@ -1,0 +1,43 @@
+<ng-template #resultsBlock>
+    <div *ngFor="let result of results">
+        <app-results-item [result]="result"></app-results-item>
+    </div>
+</ng-template>
+<ng-template #emptyBlock>You have no results yet. Lets add some!</ng-template>
+
+<div>
+    <h2>Your results!</h2>
+    <div *ngIf="!!results.length; then resultsBlock else emptyBlock"></div>
+    <app-add-button data-bs-toggle="modal" data-bs-target="#exampleModal"></app-add-button>
+
+    <form [formGroup]="resultForm">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add you result</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Result</span>
+                            <input type="number" class="form-control" placeholder="0" aria-label="Value" formControlName="value">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Description</span>
+                            <input type="text" class="form-control" placeholder="Description" aria-label="Description" formControlName="description">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Date</span>
+                            <input type="date" class="form-control" placeholder="Date" aria-label="Date" formControlName="date">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="saveNewResults()">Save result</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
