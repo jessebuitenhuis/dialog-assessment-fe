@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 100vh;
+
+  .header {
+    padding: 12px;
+  }
+  .content {
+    flex-grow: 1;
+  }
+}
